@@ -1,12 +1,15 @@
 package bank;
 
+import java.util.*;
+
 public class Client {
     private String name;
-    private short[] accountCode;
+    private List<Short> accountCodes;
 
-    public Client(String name, short[] accountCode) {
+    public Client(String name, Short accountCode) {
         this.name = name;
-        this.accountCode = accountCode;
+        accountCodes = new ArrayList<Short>();
+        accountCodes.add(accountCode);
     }
 
     public String getName() {
@@ -17,12 +20,4 @@ public class Client {
         this.name = name;
     }
 
-
-    public short[] getAccountCode() {
-        return accountCode;
-    }
-
-    public void setAccountCode(short[] accountCode) {
-        this.accountCode = accountCode;
-    }
 }

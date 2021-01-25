@@ -1,22 +1,15 @@
 package bank;
 
-import java.util.List;
+import java.util.*;
 
 public class Agency {
     private List<Integer> account;
     private short numberOfAccounts;
+    private List<Client> clients;
 
     public short createAccount() {
-        numberOfAccounts += 1;
-        return numberOfAccounts;
-    }
-
-    public List<Integer> getContas() {
-        return account;
-    }
-
-    public void setContas(List<Integer> account) {
-        this.account = account;
+        setNumberOfAccounts((short)(getNumberOfAccounts() + 1));
+        return getNumberOfAccounts();
     }
 
     public short getNumberOfAccounts() {
@@ -26,4 +19,6 @@ public class Agency {
     public void setNumberOfAccounts(short numberOfAccounts) {
         this.numberOfAccounts = numberOfAccounts;
     }
+
+
 }
