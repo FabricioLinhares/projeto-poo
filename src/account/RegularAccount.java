@@ -1,4 +1,4 @@
 package account;
 
-public class RegularAccount {
+public class RegularAccount extends Account {
 }
