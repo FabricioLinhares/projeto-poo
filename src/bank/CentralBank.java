@@ -10,7 +10,7 @@ public class CentralBank {
         pixKeys = new ArrayList<PixKey>();
         banks = new ArrayList<Bank>();
     }
-
+/*
     public String registerPix(byte type, String owner, byte bankCode, byte agencyCode, byte accountCode) {
 
     }
@@ -34,4 +34,5 @@ public class CentralBank {
     public Bank getBank(byte bankCode) {
 
     }
+    */
 }
