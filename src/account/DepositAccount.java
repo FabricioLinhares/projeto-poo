@@ -1,5 +1,13 @@
 package account;
 
-public interface DepositAccount {
-    public void deposit(int ammount);
+public abstract class DepositAccount extends Account {
+
+    public DepositAccount (double balance, short code){
+        super(balance, code);
+    }
+
+    public void deposit(double value) {
+        balance = getBalance() + value;
+    }
+
 }

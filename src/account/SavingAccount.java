@@ -1,7 +1,8 @@
 package account;
 
-public class SavingAccount extends Account implements DepositAccount {
-    public void deposit(int ammount) {
+public class SavingAccount extends DepositAccount {
 
+    public SavingAccount (double balance, short code) {
+        super(balance,code);
     }
 }

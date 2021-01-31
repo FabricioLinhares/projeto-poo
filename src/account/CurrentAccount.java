@@ -1,7 +1,9 @@
 package account;
 
-public class CurrentAccount extends RegularAccount implements DepositAccount {
-    public void deposit(int ammount) {
+public class CurrentAccount extends DepositAccount {
 
+    public CurrentAccount (double balance, short code) {
+        super(balance, code);
     }
+
 }
