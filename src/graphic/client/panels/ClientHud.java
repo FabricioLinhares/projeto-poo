@@ -1,7 +1,7 @@
-package graphic.account.panels;
+package graphic.client.panels;
 
-import graphic.account.CardPanel;
-import graphic.account.Panels;
+import graphic.client.CardPanel;
+import graphic.client.Panels;
 
 import javax.swing.*;
 
@@ -12,9 +12,12 @@ public class ClientHud extends CardPanel implements Panels {
 
     public ClientHud(JPanel parent) {
         super(parent);
-        setSize(300, 500);
+        setChangeButton(entrarButton, ACCOUNTPANEL);
+    }
 
-        addChangeButton(entrarButton, ACCOUNTPANEL);
+    @Override
+    public void setChangeButton(JButton button, String action) {
+        super.setChangeButton(button, action);
     }
 
     public JPanel getPanel() {

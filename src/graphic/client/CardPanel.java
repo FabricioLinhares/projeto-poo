@@ -1,4 +1,4 @@
-package graphic.account;
+package graphic.client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ abstract public class CardPanel extends JFrame {
         this.parent = parent;
     }
 
-    public void addChangeButton(JButton button, String action) {
+    public void setChangeButton(JButton button, String action) {
         button.setActionCommand(action);
         button.addActionListener(new ChangeCardlayoutListener());
     }

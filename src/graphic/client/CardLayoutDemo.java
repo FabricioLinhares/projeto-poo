@@ -1,7 +1,7 @@
-package graphic.account;
+package graphic.client;
 
-import graphic.account.panels.AccountHud;
-import graphic.account.panels.ClientHud;
+import graphic.client.panels.AccountHud;
+import graphic.client.panels.ClientHud;
 
 import java.awt.*;
 import javax.swing.*;
@@ -10,7 +10,6 @@ public class CardLayoutDemo extends JFrame implements Panels {
     JPanel cards;
 
     public CardLayoutDemo() {
-
         setTitle("CardLayoutDemo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

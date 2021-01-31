@@ -1,6 +1,4 @@
-package graphic.account;
-
-import javax.swing.*;
+package graphic.client;
 
 public interface Panels {
     final static String ACCOUNTPANEL = "Account Card";

@@ -1,6 +1,6 @@
-package graphic.account.panels;
+package graphic.client.panels;
 
-import graphic.account.Panels;
+import graphic.client.Panels;
 
 import javax.swing.*;
 
@@ -10,13 +10,11 @@ public class AccountHud implements Panels {
     private JButton sacarButton;
     private JButton cadastrarPIXButton;
     private JPanel panel;
+    private JLabel accountNumber;
 
-    /*public AccountHud() {
-        add(panel);
-
-        setTitle("Hud Account");
-        setSize(400, 500);
-    }*/
+    public void updateAccount(short value) {
+        accountNumber.setText("Conta: " + value);
+    }
 
     public JPanel getPanel() {
         return panel;
