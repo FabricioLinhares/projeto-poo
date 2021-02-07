@@ -1,17 +1,19 @@
 package bank;
 
+import account.Account;
+
 import java.util.*;
 
 public class Client {
-    private String name;
-    private List<Short> accountCodes;
-    private short id;
+    private final String name;
+    private final List<Account> accounts;
+    private final short id;
 
-    public Client(String name, short id, Short accountCode) {
+    public Client(String name, short id, Account account) {
         this.name = name;
         this.id = id;
-        accountCodes = new ArrayList<Short>();
-        accountCodes.add(accountCode);
+        accounts = new ArrayList<>();
+        accounts.add(account);
     }
 
     public String getName() {
@@ -22,7 +24,11 @@ public class Client {
         return id;
     }
 
-    public List<Short> getAccountCodes() {
-        return accountCodes;
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public double getAppliedMoney() {
+        return accounts.stream().mapToDouble(Account::getBalance).sum();
     }
 }

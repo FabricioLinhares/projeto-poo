@@ -1,6 +1,5 @@
 package bank;
 
-import account.Account;
 import account.CurrentAccount;
 import account.SalaryAccount;
 import account.SavingAccount;
@@ -31,7 +30,7 @@ class AgencyTest {
         SalaryAccount contaSalario;
         contaSalario = (SalaryAccount) agencia.creatAccount((byte)3);
 
-        assertEquals(2,agencia.numberOfAccounts());
+        assertEquals(2,agencia.getNumberOfAccounts());
     }
 
     @Test

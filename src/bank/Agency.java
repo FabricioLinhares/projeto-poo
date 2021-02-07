@@ -9,16 +9,18 @@ import java.util.*;
 
 public class  Agency {
     private final short code;
-    private final List<Account> accounts;
+    private short numberOfAccounts;
     private final List<Client> clients;
 
     public Agency(short code) {
+        this.numberOfAccounts = 0;
         this.code = code;
-        this.accounts = new ArrayList<>();
         this.clients = new ArrayList<>();
     }
 
-    public short creatClient(String name, Account account)
+    public short creatClient(String name, Account account) {
+        return 1;
+    }
 
     public Account creatAccount(byte number) {
         switch (number) {
@@ -31,43 +33,31 @@ public class  Agency {
             default:
                 return null;
         }
-
     }
 
     private SalaryAccount creatSalaryAccount() {
-        SalaryAccount salaryAccount = new SalaryAccount(0.0, (short)accounts.size());
-        accounts.add(salaryAccount);
+        SalaryAccount salaryAccount = new SalaryAccount(0.0, numberOfAccounts);
+        numberOfAccounts++;
         return salaryAccount;
     }
 
     private SavingAccount creatSavingAccount() {
-        SavingAccount savingAccount = new SavingAccount(0.0, (short)accounts.size());
-        accounts.add(savingAccount);
+        SavingAccount savingAccount = new SavingAccount(0.0, numberOfAccounts);
+        numberOfAccounts++;
         return savingAccount;
     }
 
     private CurrentAccount creatCurrentAccount() {
-        CurrentAccount currentAccount = new CurrentAccount(0.0, (short)accounts.size());
-        accounts.add(currentAccount);
+        CurrentAccount currentAccount = new CurrentAccount(0.0, numberOfAccounts);
+        numberOfAccounts++;
         return currentAccount;
     }
 
-    public int numberOfAccounts() {
-        return accounts.size();
+    public int getNumberOfAccounts() {
+        return numberOfAccounts;
     }
 
     public double getAppliedMoney() {
-        return accounts.stream().mapToDouble(Account::getBalance).sum();
-    }
-
-    public double getClientMoney(short clientId ) {
-        double clientMoney=0;
-
-        Client client = clients.get(clientId);
-        List<Short> accountCodes = client.getAccountCodes();
-
-        clientMoney = accountCodes.stream().mapToDouble(code -> accounts.get(code).getBalance()).sum();
-
-        return clientMoney;
+        return clients.stream().mapToDouble(Client::getAppliedMoney).sum();
     }
 }
