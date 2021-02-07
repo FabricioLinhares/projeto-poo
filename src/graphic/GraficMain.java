@@ -1,39 +1,53 @@
 package graphic;
 
+import bank.Agency;
 import bank.Bank;
-import graphic.client.CardPanel;
 import graphic.client.panels.AccountHud;
 import graphic.client.panels.ClientHud;
+import graphic.dialogs.MessageDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class graficMain extends JFrame implements menuActionHandler {
-    private Bank bank;
+public class GraficMain extends JFrame {
+    private Bank bank = new Bank();
+    private Agency agency = new Agency();
 
     JPanel cards;
 
-    private void addMenuItem(JMenu parent, String name, String actionCommand) {
+    private JMenuItem addMenuItem(JMenu parent, String name) {
         JMenuItem menuItem = new JMenuItem(name);
-        menuItem.setActionCommand(actionCommand);
-        menuItem.addActionListener(new ChangeCardlayoutListener());
-
         parent.add(menuItem);
+
+        return menuItem;
     }
 
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu menuCreate = new JMenu("Criar");
-        addMenuItem(menuCreate, "Agência", CREATE_AGENCY);
-        addMenuItem(menuCreate, "Conta", CREATE_ACCOUNT);
+        addMenuItem(menuCreate, "Agência");
+        addMenuItem(menuCreate, "Conta");
 
         JMenu menuOthers = new JMenu("Outros");
-        addMenuItem(menuOthers, "Ver dinheiro aplicado no Banco", SHOW_APPLIED_MONEY_BANK);
-        addMenuItem(menuOthers, "Ver dinheiro aplicado na Agência", SHOW_APPLIED_MONEY_AGENCY);
-        addMenuItem(menuOthers, "Mudar conta", CHANGE_ACCOUNT);
+
+        JMenuItem menuMoneyAppliedBank = addMenuItem(menuOthers, "Ver dinheiro aplicado no Banco");
+        menuMoneyAppliedBank.addActionListener(e -> {
+            MessageDialog dialog = new MessageDialog("R$" + bank.getAppliedMoney());
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+
+        JMenuItem menuMoneyAppliedAgency = addMenuItem(menuOthers, "Ver dinheiro aplicado na Agência");
+        menuMoneyAppliedAgency.addActionListener(e -> {
+            MessageDialog dialog = new MessageDialog("R$" + agency.getAppliedMoney());
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+
+        addMenuItem(menuOthers, "Mudar conta");
 
         menuBar.add(menuCreate);
         menuBar.add(menuOthers);
@@ -41,7 +55,7 @@ public class graficMain extends JFrame implements menuActionHandler {
         return menuBar;
     }
 
-    public graficMain() {
+    public GraficMain() {
         setTitle("PIX");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setJMenuBar(createMenuBar());
@@ -70,6 +84,6 @@ public class graficMain extends JFrame implements menuActionHandler {
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(graficMain::new);
+        javax.swing.SwingUtilities.invokeLater(GraficMain::new);
     }
 }
