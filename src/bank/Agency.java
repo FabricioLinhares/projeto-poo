@@ -5,26 +5,21 @@ import account.Account;
 import java.util.*;
 
 public class  Agency {
-    private Set<Account> accounts = new HashSet<>();
-    private short numberOfAccounts;
-    private List<Client> clients;
+    private final short code;
+    private final List<Account> accounts;
+    private final List<Client> clients;
+
+    public Agency(short code) {
+        this.code = code;
+        this.accounts = new ArrayList<>();
+        this.clients = new ArrayList<>();
+    }
 
     public short createAccount() {
-        setNumberOfAccounts((short)(getNumberOfAccounts() + 1));
-        return getNumberOfAccounts();
+         return 1;
     }
 
     public double getAppliedMoney() {
         return accounts.stream().mapToDouble(Account::getBalance).sum();
     }
-
-    public short getNumberOfAccounts() {
-        return numberOfAccounts;
-    }
-
-    public void setNumberOfAccounts(short numberOfAccounts) {
-        this.numberOfAccounts = numberOfAccounts;
-    }
-
-
 }

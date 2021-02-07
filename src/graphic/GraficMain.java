@@ -4,6 +4,7 @@ import bank.Agency;
 import bank.Bank;
 import graphic.client.panels.AccountHud;
 import graphic.client.panels.ClientHud;
+import graphic.dialogs.ChangeAccountDialog;
 import graphic.dialogs.MessageDialog;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
 
 public class GraficMain extends JFrame {
     private Bank bank = new Bank();
-    private Agency agency = new Agency();
+    private Agency agency;
 
     JPanel cards;
 
@@ -28,7 +29,16 @@ public class GraficMain extends JFrame {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu menuCreate = new JMenu("Criar");
-        addMenuItem(menuCreate, "Agência");
+
+        JMenuItem menuCreateAgency = addMenuItem(menuCreate, "Agência");
+        menuCreateAgency.addActionListener(e -> {
+            short agencyId = bank.createAgency();
+
+            MessageDialog dialog = new MessageDialog("Agência nº" + agencyId + " criada!");
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+
         addMenuItem(menuCreate, "Conta");
 
         JMenu menuOthers = new JMenu("Outros");
@@ -47,7 +57,13 @@ public class GraficMain extends JFrame {
             dialog.setVisible(true);
         });
 
-        addMenuItem(menuOthers, "Mudar conta");
+        JMenuItem menuChangeAccount = addMenuItem(menuOthers, "Mudar conta");
+
+        menuChangeAccount.addActionListener(e -> {
+            ChangeAccountDialog dialog = new ChangeAccountDialog();
+            dialog.pack();
+            dialog.setVisible(true);
+        });
 
         menuBar.add(menuCreate);
         menuBar.add(menuOthers);
