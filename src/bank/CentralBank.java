@@ -3,13 +3,9 @@ package bank;
 import java.util.*;
 
 public class CentralBank {
-    private static List<PixKey> pixKeys;
-    private static List<Bank> banks;
+    private static List<PixKey> pixKeys = new ArrayList<PixKey>();
+    private static List<Bank> banks = new ArrayList<Bank>();
 
-    public CentralBank() {
-        pixKeys = new ArrayList<PixKey>();
-        banks = new ArrayList<Bank>();
-    }
 /*
     public String registerPix(byte type, String owner, byte bankCode, byte agencyCode, byte accountCode) {
 
