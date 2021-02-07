@@ -18,6 +18,8 @@ public class  Agency {
         this.clients = new ArrayList<>();
     }
 
+    public short creatClient(String name, Account account)
+
     public Account creatAccount(byte number) {
         switch (number) {
             case 1:
@@ -58,7 +60,7 @@ public class  Agency {
         return accounts.stream().mapToDouble(Account::getBalance).sum();
     }
 
-    public double getClientMoney(short clientId) {
+    public double getClientMoney(short clientId ) {
         double clientMoney=0;
 
         Client client = clients.get(clientId);

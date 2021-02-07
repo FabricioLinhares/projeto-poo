@@ -5,9 +5,11 @@ import java.util.*;
 public class Client {
     private String name;
     private List<Short> accountCodes;
+    private short id;
 
-    public Client(String name, Short accountCode) {
+    public Client(String name, short id, Short accountCode) {
         this.name = name;
+        this.id = id;
         accountCodes = new ArrayList<Short>();
         accountCodes.add(accountCode);
     }
@@ -16,8 +18,8 @@ public class Client {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public short getId() {
+        return id;
     }
 
     public List<Short> getAccountCodes() {

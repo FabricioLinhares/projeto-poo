@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AgencyTest {
 
     @Test
-    void creatAccount() {
+    void getAppliedMoney() {
 
         Agency agencia = new Agency((short)0);
         CurrentAccount contaCorrente;
@@ -23,7 +23,7 @@ class AgencyTest {
     }
 
     @Test
-    void getAppliedMoney() {
+    void numberOfAccounts() {
         Agency agencia = new Agency((short)0);
         SavingAccount contaPoupança;
         contaPoupança = (SavingAccount) agencia.creatAccount((byte)2);
@@ -32,5 +32,22 @@ class AgencyTest {
         contaSalario = (SalaryAccount) agencia.creatAccount((byte)3);
 
         assertEquals(2,agencia.numberOfAccounts());
+    }
+
+    @Test
+    void getClientMoney() {
+        Agency agencia = new Agency((short)0);
+        SavingAccount contaPoupança;
+        contaPoupança = (SavingAccount) agencia.creatAccount((byte)2);
+
+        CurrentAccount contaCorrente2;
+        contaCorrente2 = (CurrentAccount) agencia.creatAccount((byte)1);
+
+        CurrentAccount contaCorrente;
+        contaCorrente = (CurrentAccount) agencia.creatAccount((byte)1);
+
+        contaCorrente.deposit(1000.0);
+        contaCorrente2.deposit(100.0);
+        contaPoupança.deposit(300.0);
     }
 }
