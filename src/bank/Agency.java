@@ -18,36 +18,38 @@ public class  Agency {
         this.clients = new ArrayList<>();
     }
 
-    public short creatClient(String name, Account account) {
-        return 1;
+    public Client createClient(String name, Account account) {
+        Client client = new Client(name,(short)clients.size(),account);
+        clients.add(client);
+        return client;
     }
 
-    public Account creatAccount(byte number) {
+    public Account createAccount(byte number) {
         switch (number) {
             case 1:
-                return creatCurrentAccount();
+                return createCurrentAccount();
             case 2:
-                return creatSavingAccount();
+                return createSavingAccount();
             case 3:
-                return creatSalaryAccount();
+                return createSalaryAccount();
             default:
                 return null;
         }
     }
 
-    private SalaryAccount creatSalaryAccount() {
+    private SalaryAccount createSalaryAccount() {
         SalaryAccount salaryAccount = new SalaryAccount(0.0, numberOfAccounts);
         numberOfAccounts++;
         return salaryAccount;
     }
 
-    private SavingAccount creatSavingAccount() {
+    private SavingAccount createSavingAccount() {
         SavingAccount savingAccount = new SavingAccount(0.0, numberOfAccounts);
         numberOfAccounts++;
         return savingAccount;
     }
 
-    private CurrentAccount creatCurrentAccount() {
+    private CurrentAccount createCurrentAccount() {
         CurrentAccount currentAccount = new CurrentAccount(0.0, numberOfAccounts);
         numberOfAccounts++;
         return currentAccount;

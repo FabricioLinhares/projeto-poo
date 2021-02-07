@@ -2,21 +2,15 @@ package graphic;
 
 import bank.Agency;
 import bank.Bank;
-import graphic.client.panels.AccountHud;
-import graphic.client.panels.ClientHud;
 import graphic.dialogs.ChangeAccountDialog;
 import graphic.dialogs.MessageDialog;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GraficMain extends JFrame {
     private Bank bank = new Bank();
     private Agency agency;
-
-    JPanel cards;
 
     private JMenuItem addMenuItem(JMenu parent, String name) {
         JMenuItem menuItem = new JMenuItem(name);
@@ -39,7 +33,12 @@ public class GraficMain extends JFrame {
             dialog.setVisible(true);
         });
 
-        addMenuItem(menuCreate, "Conta");
+        JMenuItem menuCreateClient = addMenuItem(menuCreate, "Cliente");
+        menuCreateClient.addActionListener(e -> {
+            int numberOfAgencys = bank.getNumberOfAgencys();
+
+
+        });
 
         JMenu menuOthers = new JMenu("Outros");
 
@@ -76,27 +75,12 @@ public class GraficMain extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setJMenuBar(createMenuBar());
 
-        cards = new JPanel(new CardLayout());
+        AccountHud accountHud = new AccountHud(null);
 
-        JPanel accountCard = (new AccountHud()).getPanel();
-        JPanel clientCard = (new ClientHud(cards)).getPanel();
-
-        cards.add(accountCard);
-        cards.add(clientCard, "Client");
-        cards.add(clientCard, "Bank");
-
-        getContentPane().add(cards, BorderLayout.CENTER);
+        getContentPane().add(accountHud.getPanel(), BorderLayout.CENTER);
         pack();
         setVisible(true);
         setSize(400, 200);
-    }
-
-    class ChangeCardlayoutListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            CardLayout layout = (CardLayout) (cards.getLayout());
-            layout.show(cards, (String) evt.getActionCommand());
-        }
     }
 
     public static void main(String[] args) {
