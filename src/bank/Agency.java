@@ -1,6 +1,9 @@
 package bank;
 
 import account.Account;
+import account.CurrentAccount;
+import account.SalaryAccount;
+import account.SavingAccount;
 
 import java.util.*;
 
@@ -15,8 +18,40 @@ public class  Agency {
         this.clients = new ArrayList<>();
     }
 
-    public short createAccount() {
-         return 1;
+    public Account creatAccount(byte number) {
+        switch (number) {
+            case 1:
+                return creatCurrentAccount();
+            case 2:
+                return creatSavingAccount();
+            case 3:
+                return creatSalaryAccount();
+            default:
+                return null;
+        }
+
+    }
+
+    private SalaryAccount creatSalaryAccount() {
+        SalaryAccount salaryAccount = new SalaryAccount(0.0, (short)accounts.size());
+        accounts.add(salaryAccount);
+        return salaryAccount;
+    }
+
+    private SavingAccount creatSavingAccount() {
+        SavingAccount savingAccount = new SavingAccount(0.0, (short)accounts.size());
+        accounts.add(savingAccount);
+        return savingAccount;
+    }
+
+    private CurrentAccount creatCurrentAccount() {
+        CurrentAccount currentAccount = new CurrentAccount(0.0, (short)accounts.size());
+        accounts.add(currentAccount);
+        return currentAccount;
+    }
+
+    public int numberOfAccounts() {
+        return accounts.size();
     }
 
     public double getAppliedMoney() {
