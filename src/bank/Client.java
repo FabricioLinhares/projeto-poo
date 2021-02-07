@@ -20,4 +20,7 @@ public class Client {
         this.name = name;
     }
 
+    public List<Short> getAccountCodes() {
+        return accountCodes;
+    }
 }

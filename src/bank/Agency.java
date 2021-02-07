@@ -57,4 +57,15 @@ public class  Agency {
     public double getAppliedMoney() {
         return accounts.stream().mapToDouble(Account::getBalance).sum();
     }
+
+    public double getClientMoney(short clientId) {
+        double clientMoney=0;
+
+        Client client = clients.get(clientId);
+        List<Short> accountCodes = client.getAccountCodes();
+
+        clientMoney = accountCodes.stream().mapToDouble(code -> accounts.get(code).getBalance()).sum();
+
+        return clientMoney;
+    }
 }
