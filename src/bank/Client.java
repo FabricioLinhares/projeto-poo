@@ -31,4 +31,8 @@ public class Client {
     public double getAppliedMoney() {
         return accounts.stream().mapToDouble(Account::getBalance).sum();
     }
+
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
 }
