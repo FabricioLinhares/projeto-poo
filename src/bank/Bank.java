@@ -20,7 +20,11 @@ public class Bank {
         return nextCode;
     }
 
-    public short getNumberOfAgencys() {
-        return (short) agencys.size();
+    public Agency getAgency(int id) {
+        return agencys.get(id);
+    }
+
+    public int getNumberOfAgencys() {
+        return agencys.size();
     }
 }

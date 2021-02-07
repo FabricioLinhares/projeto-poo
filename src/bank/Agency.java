@@ -57,7 +57,15 @@ public class  Agency {
         return numberOfAccounts;
     }
 
+    public int getNumberOfClients() {
+        return clients.size();
+    }
+
     public double getAppliedMoney() {
         return clients.stream().mapToDouble(Client::getAppliedMoney).sum();
+    }
+
+    public Client getClient(int id) {
+        return clients.get(id);
     }
 }

@@ -60,7 +60,7 @@ public class GraficMain extends JFrame {
         JMenuItem menuChangeAccount = addMenuItem(menuOthers, "Mudar conta");
 
         menuChangeAccount.addActionListener(e -> {
-            ChangeAccountDialog dialog = new ChangeAccountDialog();
+            ChangeAccountDialog dialog = new ChangeAccountDialog(bank);
             dialog.pack();
             dialog.setVisible(true);
         });
